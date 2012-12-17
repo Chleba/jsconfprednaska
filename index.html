@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>JS MeetUp 12-2012 - JSCONF.eu</title>
+
+		<meta name="description" content="JSCONF.eu - vybrane temata WebRTC, shadow DOM">
+		<meta name="author" content="Lukas \"chleba\" Franek">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<!-- uvod -->
+				<section data-state="alert">
+					<h1>JSCONF.eu 2012</h1>
+					<h3>vybrané přednášky</h3>
+					<p>WebRTC, shadow DOM</p>
+				</section>
+
+				<!-- Web RTC -->
+				<section data-state="soothe">
+					<section>
+						<h1>WebRTC</h1>
+					</section>
+
+					<section>
+						<h2>Podpora</h2>
+						<ul>
+							<li>Chrome 20+</li>
+							<li>Opera 12 - pouze "getUserMedia"</li>
+							<li>Firefox 17 - pouze "getUserMedia" </li>
+							<li>IE - via Chrome Frame (Skype)</li>
+							<li>Cisco, Eriscon - mobilní posílání zpráv</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Co dělá Web RTC aplikace</h2>
+						<ul>
+							<li>Získání data streamu</li>
+							<li>Komunikaci</li>
+							<li>Session a Error managment, Posílání zpráv</li>
+							<li>Výměna informací o data streamu</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Co řeší Web RTC API</h2>
+						<ul>
+							<li>Media stream</li>
+							<li>Peer Connection</li>
+							<li>Data channel</li>
+						</ul>
+					</section>
+
+				</section>
+
+				<section data-state="soothe">
+					<section>
+						<h1>Web RTC</h1>
+						<h2>signalizace</h2>
+					</section>
+					<section>
+						<h2>Signalizace</h2>
+						<p>Mechanizmus pro posílání kontrolních zpráv mezi spojeními.</p>
+						<p>Signály nejsou ve specifikaci Web RTC.</p>
+					</section>
+					<section>
+						<h2>Možnosti</h2>
+						<p>Pro signalizaci má "člověk" volnou ruku.</p>
+						<ul>
+							<li>WebSocket</li>
+							<li>XMPP</li>
+							<li>XHR (google channel API)</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Web RTC session</h2>
+						<p>Konfigurace je popsána <a href="http://en.wikipedia.org/wiki/Session_Description_Protocol">Session Descriptor protokolem</a>. Session potřebuje:</p>
+						<ul>
+							<li>Lokální konfiguraci</li>
+							<li>Vzdálenou konfiguraci</li>
+							<li>Remote transport adresu</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Co se vlastně posílá</h2>
+						<ul>
+							<li>Volající poslal žádost</li>
+							<li>Volaný získal žádost</li>
+							<li>Volaný poslal žádost</li>
+							<li>Volající získal žádost</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Průběh</h2>
+						<ul>
+							<li>Navázání Signální komunikace</li>
+							<li>Nastavení lokální a vzdálené konfigurace</li>
+						</ul>
+						<p>JSEP - javascsript session establishment protokol</p>
+					</section>
+					<section>
+						<h2>JSEP</h2>
+						<img src="./img/jsep.jpg" alt="jsep" />
+					</section>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+		</script>
+
+	</body>
+</html>
