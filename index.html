@@ -144,7 +144,23 @@
 					</section>
 					<section>
 						<h2>Ukázka</h2>
-						<div style="border:1px dashed #FFF; padding:5px; width:100%; min-height:20px;" id="shadow">SHADOW</div>
+						<div style="border:1px dashed #FFF; padding:5px; width:100%; min-height:20px;" id="shadow">
+							BLA bla bla bla ... 
+						</div>
+						<script type="text/javascript">
+							document.addEventListener('DOMContentLoaded', function () {
+								var elm = document.getElementById('shadow');
+								var shadow = window.ShadowRoot || window.WebKitShadowRoot;
+								var root = new shadow(elm);
+								var style = document.createElement('style');
+								//style.scoped = true;
+								style.textContent = 'h1,h2,h3,h4,h5,h6  { display:inline; }';
+								root.appendChild(style)
+								root.innerHTML += '<p><h1>Ninja,</h1><h2>Ninja,</h2><h3>Ninja,</h3><h4>Ninja,</h4><h5>Ninja,</h5><h6>Ninja</h6></p>';
+							});
+						</script>
+						<h1>A</h1>
+						<h1>B</h1>
 						<pre>
 							<code>
 var elm        = document.getElementById('nejakyElement'); // shadow host
@@ -157,7 +173,62 @@ var shadowRoot = new WebkitShadowRoot(elm);                // shadow root
 						<div>
 							<video src="./img/STRONK.mp4" width="800" controls="true"></video>
 						</div>
-					</section>					
+					</section>
+					<section>
+						<h2>&lt;content&gt;</h2>
+						<div id="shadow2">
+							<ul class="stories">
+								<li><a href="#">Item</a></li>
+								<li class="ass"><a href="#">Item</a></li>
+								<li><a href="#">Item</a></li>
+								<li class="sht"><a href="#">Item</a></li>
+								<li class="sht"><a href="#">Item</a></li>
+								<li><a href="#">Item</a></li>
+								<li class="ass"><a href="#">Item</a></li>
+								<li><a href="#">Item</a></li>
+							</ul>
+						</div>
+
+						<script type="text/javascript">;
+							var elm = document.getElementById('shadow2');
+							var style = document.createElement('style');
+							style.textContent = '.group  { border:1px solid red; padding:5px; }';
+
+							function makeGroups(){
+								window.ShadowRoot = window.ShadowRoot || window.WebKitShadowRoot;
+								var root = new window.ShadowRoot(elm);
+
+								var style = document.createElement('style');
+								style.textContent = '.group  { border:1px solid red; padding:5px; color:#FFF } .group ul li a { color:#FFF; }';
+								root.appendChild(style);
+								
+								group = createGroup('.ass')
+								root.appendChild(group);
+								return
+								var group = createGroup('.ass')
+								root.appendChild(group);
+								return
+								group = createGroup('.sht')
+								root.appendChild(group);
+								group = createGroup('')
+								root.appendChild(group);
+							}
+
+							function createGroup(selector){
+								var group = document.createElement('div');
+								group.className = 'group';
+								group.innerHTML = '<ul><content select="'+selector+'"></content></ul>';
+								return group;
+							}
+							document.addEventListener('DOMContentLoaded', function(){
+								[].forEach.call(document.querySelectorAll('ul.stories'), makeGroups);
+							});
+						</script>
+						<div>
+							<input type="button" onclick="UlOrder()" value="Setřiď" />
+						</div>
+
+					</section>
 				</section>
 				
 			</div>
