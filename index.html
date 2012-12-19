@@ -176,59 +176,59 @@ var shadowRoot = new WebkitShadowRoot(elm);                // shadow root
 					</section>
 					<section>
 						<h2>&lt;content&gt;</h2>
-						<div id="shadow2">
-							<ul class="stories">
-								<li><a href="#">Item</a></li>
-								<li class="ass"><a href="#">Item</a></li>
-								<li><a href="#">Item</a></li>
-								<li class="sht"><a href="#">Item</a></li>
-								<li class="sht"><a href="#">Item</a></li>
-								<li><a href="#">Item</a></li>
-								<li class="ass"><a href="#">Item</a></li>
-								<li><a href="#">Item</a></li>
-							</ul>
-						</div>
+						<ul class="stories">
+							<li><a href="#">Item</a></li>
+							<li class="ass"><a href="#">Item</a></li>
+							<li><a href="#">Item</a></li>
+							<li class="sht"><a href="#">Item</a></li>
+							<li class="sht"><a href="#">Item</a></li>
+							<li><a href="#">Item</a></li>
+							<li class="ass"><a href="#">Item</a></li>
+							<li><a href="#">Item</a></li>
+						</ul>
+						<script>
+						  window.ShadowRoot = window.ShadowRoot || window.WebKitShadowRoot;
 
-						<script type="text/javascript">;
-							var elm = document.getElementById('shadow2');
-							var style = document.createElement('style');
-							style.textContent = '.group  { border:1px solid red; padding:5px; }';
+						  var groupify = function (contentSelector) {
+						      var group = document.createElement('div');
+						      group.className = 'group';
+						      group.innerHTML = '<ul><content select="' + contentSelector + '"></content></ul>';
+						      return group;
+						  };
 
-							function makeGroups(){
-								window.ShadowRoot = window.ShadowRoot || window.WebKitShadowRoot;
-								var root = new window.ShadowRoot(elm);
-
-								var style = document.createElement('style');
+						  var shadowify = function (list) {
+						      	var root = new ShadowRoot(list);
+						      
+							    var style = document.createElement('style');
 								style.textContent = '.group  { border:1px solid red; padding:5px; color:#FFF } .group ul li a { color:#FFF; }';
 								root.appendChild(style);
-								
-								group = createGroup('.ass')
-								root.appendChild(group);
-								return
-								var group = createGroup('.ass')
-								root.appendChild(group);
-								return
-								group = createGroup('.sht')
-								root.appendChild(group);
-								group = createGroup('')
-								root.appendChild(group);
-							}
 
-							function createGroup(selector){
-								var group = document.createElement('div');
-								group.className = 'group';
-								group.innerHTML = '<ul><content select="'+selector+'"></content></ul>';
-								return group;
-							}
-							document.addEventListener('DOMContentLoaded', function(){
-								[].forEach.call(document.querySelectorAll('ul.stories'), makeGroups);
-							});
+								//root.applyAuthorStyles = true;
+								root.appendChild(groupify('.ass'));
+								root.appendChild(groupify('.sht'));
+								root.appendChild(groupify(''));
+						  };
+
+						  document.addEventListener('DOMContentLoaded', function() {
+						    [].forEach.call(document.querySelectorAll('ul.stories'), shadowify);
+						  });
 						</script>
-						<div>
-							<input type="button" onclick="UlOrder()" value="Setřiď" />
-						</div>
-
 					</section>
+				</section>
+
+				<!-- konec -->
+				<section data-state="alert">
+					<h1>Děkuji</h1>
+					<h5>Zdroje:</h5>
+					<ul>
+						<li><a href="http://www.w3.org/TR/shadow-dom/">Shadow DOM W3</a></li>
+						<li><a href="http://www.youtube.com/watch?feature=player_embedded&v=JNjnv-Gcpnw">JSCONF.eu přednáška o Shadow DOM</a></li>
+						<li><a href="http://www.html5rocks.com/en/tutorials/webrtc/basics/">WebRTC html5 rock</a></li>
+						<li><a href="https://www.youtube.com/watch?feature=player_embedded&v=mYQNEaOfqGI">JSCONF.eu přednáška o WebRTC</a></li>
+					</ul>
+					<p style="margin-top:15px;" class="small">
+						Vypracoval <a href="http://chleba.org">Lukáš 'chleba' Franěk</a>. Na prezentaci byla použita služba <a href="http://lab.hakim.se/reveal-js/">revealjs</a>.
+					</p>
 				</section>
 				
 			</div>
