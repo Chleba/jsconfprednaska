@@ -12,7 +12,7 @@
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/night.css" id="theme">
 
 		<!-- For syntax highlighting -->
@@ -35,7 +35,7 @@
 			<div class="slides">
 
 				<!-- uvod -->
-				<section data-state="alert">
+				<section data-state="jsconf">
 					<h1>JSCONF.eu 2012</h1>
 					<h3>vybrané přednášky</h3>
 					<p>WebRTC, shadow DOM</p>
@@ -133,7 +133,7 @@
 					</section>
 					<section>
 						<h2>Co to je ?</h2>
-						<p>Umožnuje mít vice stromovou DOM strukturu pripojenou k hlavnímu stromu dokumentu.</p>
+						<p>Umožnuje mít více stromovou DOM strukturu pripojenou k hlavnímu stromu dokumentu.</p>
 					</section>
 					<section>
 						<h2>Kde ?</h2>
@@ -142,6 +142,22 @@
 					<section>
 						<img src="./img/shadow-dom.png" alt="shadow dom" />
 					</section>
+					<section>
+						<h2>Ukázka</h2>
+						<div style="border:1px dashed #FFF; padding:5px; width:100%; min-height:20px;" id="shadow">SHADOW</div>
+						<pre>
+							<code>
+var elm        = document.getElementById('nejakyElement'); // shadow host
+var shadowRoot = new WebkitShadowRoot(elm);                // shadow root
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>Jsou mezi námi</h2>
+						<div>
+							<video src="./img/STRONK.mp4" width="800" controls="true"></video>
+						</div>
+					</section>					
 				</section>
 				
 			</div>

@@ -1201,6 +1201,9 @@ body {
 	     -o-transition: background 800ms ease;
 	        transition: background 800ms ease;
 }
+.jsconf .reveal .state-background {
+	background: hotPink;
+}
 .alert .reveal .state-background {
 	background: rgba( 200, 50, 30, 0.6 );
 }
